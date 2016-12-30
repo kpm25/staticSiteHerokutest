@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+<style>
+body{ background:#333; }
+#my_canvas{ background:#FFF; border:#999 1px solid; }
+</style>
+<script>
+function initCanvas(){
+    var ctx = document.getElementById('my_canvas').getContext('2d');
+    var buildings = [ {"id":"house","x":100,"y":100,"w":50,"h":50,"bg":"magenta"},
+                      {"id":"grocery","x":200,"y":100,"w":50,"h":50,"bg":"green"},
+                      {"id":"post_office","x":300,"y":100,"w":50,"h":50,"bg":"orange"},
+					  {"id":"school","x":400,"y":200,"w":60,"h":50,"bg":"yellow"},
+					  {"id":"gym","x":500,"y":300,"w":50,"h":40,"bg":"red"}
+    ];
+    for(var i = 0; i < buildings.length; i++){
+        var b = buildings[i];
+        ctx.fillStyle = b.bg;
+        ctx.fillRect(b.x,b.y,b.w,b.h);
+    }
+}
+window.addEventListener('load', function(event) {
+    initCanvas();
+});
+</script>
+</head>
+<body>
+<canvas id="my_canvas" width="800" height="500"></canvas>
+<li ><h4  ><a  href="index.html" class="selected" ><font color='yellow'>Home...</font></a></h4></li>
+</body>  
+</html>

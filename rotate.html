@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+ <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<head>
+<script>
+var looper;
+var degrees = 0;
+function rotateAnimation(el,speed){
+	var elem = document.getElementById(el);
+	if(navigator.userAgent.match("Chrome")){
+		elem.style.WebkitTransform = "rotate("+degrees+"deg)";
+	} else if(navigator.userAgent.match("Firefox")){
+		elem.style.MozTransform = "rotate("+degrees+"deg)";
+	} else if(navigator.userAgent.match("MSIE")){
+		elem.style.msTransform = "rotate("+degrees+"deg)";
+	} else if(navigator.userAgent.match("Opera")){
+		elem.style.OTransform = "rotate("+degrees+"deg)";
+	} else {
+		elem.style.transform = "rotate("+degrees+"deg)";
+	}
+	looper = setTimeout('rotateAnimation(\''+el+'\','+speed+')',speed);
+	degrees++;
+	if(degrees > 359){
+		degrees = 1;
+	}
+	document.getElementById("status").innerHTML = "rotate("+degrees+"deg)";
+}
+</script>
+</head>
+<body>
+<img id="img1" src="images/cog1.png" alt="cog1">
+<script>rotateAnimation("img1",30);</script>
+<h2 style="width:200px;" id="status"></h2>
+<h4  ><a  href="index.html" class="selected" ><font color='blue'>Home...</font></a></h4></li>
+</body>  
+</html>

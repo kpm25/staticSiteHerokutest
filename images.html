@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Thumbnail Cycle Tutorial</title>
+<style>
+.item{
+	float: left;
+	border: #AAA 1px solid;
+	padding: 10px;
+	margin: 10px;
+}
+.item > img{
+	width: 180px;
+	height: 140px;
+	border: #666 1px solid;
+    cursor: pointer;
+}
+.item > span{
+	display: block;
+	text-align: center;
+	margin-top: 10px;
+}
+</style>
+<script>
+window.addEventListener("load", function(){
+	var items_container = document.getElementById("items_container");
+	var thumbtimer, ti=0, dir="images/";
+	var obj1 = { name:"Squiggle1", pics:["first_4.jpg","first_1.jpg","first_2.jpg","first_3.jpg","first_4.jpg"] };
+	var obj2 = { name:"Squiggle2", pics:["second_4.jpg","second_1.jpg","second_2.jpg","second_3.jpg","second_4.jpg"] };
+	var obj3 = { name:"Squiggle3", pics:["third_4.jpg","third_1.jpg","third_2.jpg","third_3.jpg","third_4.jpg"] };
+	var ary = [obj1,obj2,obj3];
+	for(var i=0; i < ary.length; i++){
+		var div = document.createElement("div");
+		var img = document.createElement("img");
+		var span = document.createElement("span");
+		div.className = "item";
+		img.oi = i;
+		img.src = dir + ary[i].pics[0];
+		span.innerHTML = ary[i].name;
+		items_container.appendChild(div);
+		div.appendChild(img);
+		div.appendChild(span);
+		img.addEventListener("mouseover", function(event){
+		    thumbtimer = setInterval(function(){
+			    ti++;
+			    if(ti == ary[event.target.oi].pics.length){
+				    ti = 0;
+			    }
+			    event.target.src = dir + ary[event.target.oi].pics[ti];
+		    }, 700);
+        });
+		img.addEventListener("mouseout", function(event){
+			clearInterval(thumbtimer);
+			ti = 0;
+			event.target.src = dir + ary[event.target.oi].pics[ti];
+		});
+	}
+});
+</script>
+</head>
+<body>
+<div id="items_container"></div>
+ <li ><h4  ><a  href="index.html" class="selected" ><font color='yellow'>Home...</font></a></h4></li>
+</body>
+</html>
