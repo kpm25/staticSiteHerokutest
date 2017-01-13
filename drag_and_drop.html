@@ -4,7 +4,21 @@
 <style>
 .objects {
     display:inline-block;
-    background-color: #FFF3CC;
+    background-color: #00ff00;
+    border: #DFBC6A 1px solid;
+    width: 50px; 
+    height: 50px;
+    margin: 10px;
+    padding: 8px;
+    font-size: 18px;
+    text-align: center;
+    box-shadow: 2px 2px 2px #999;
+    cursor: move;
+}
+
+.objects2 {
+    display:inline-block;
+    background-color: #FF0000;
     border: #DFBC6A 1px solid;
     width: 50px; 
     height: 50px;
@@ -16,7 +30,22 @@
     cursor: move;
 }
 #drop_zone {
-    background-color: #EEE; 
+
+    display:inline-block;
+    background-color: #ddd; 
+    border: #999 1px solid;
+    width: 280px; 
+    height: 200px;
+    padding: 8px;
+    font-size: 18px;
+	
+    margin-right: 20px;
+	margin-left: 20px;
+    
+}
+#drop_zone2 {
+    display:inline-block;
+    background-color: #eee; 
     border: #999 1px solid;
     width: 280px; 
     height: 200px;
@@ -56,8 +85,14 @@ function drag_end(event) {
 	droppedIn = false;
 }
 function readDropZone(){
-    for(var i=0; i < _("drop_zone").children.length; i++){
-        alert(_("drop_zone").children[i].id+" is in the drop zone");
+    for(var i=0; i < _("drop_zone2").children.length; i++){
+        alert(_("drop_zone").children[i].id+" is in the drop zone1");
+    }
+    /* Run Ajax request to pass any data to your server */
+}
+function readDropZone2(){
+    for(var i=0; i < _("drop_zone2").children.length; i++){
+        alert(_("drop_zone2").children[i].id+" is in the drop zone2");
     }
     /* Run Ajax request to pass any data to your server */
 }
@@ -66,17 +101,23 @@ function readDropZone(){
 <body>
 <li ><a  href="index.html" class="selected" ><font color='red'>Home Page</font></a></li>
 
-<h2 id="app_status">App status...</h2>
-<h1>Drop Zone</h1>
-<div id="drop_zone" ondragenter="drag_enter(event)" ondrop="drag_drop(event)" ondragover="return false" ondragleave="drag_leave(event)" ></div>
 <div id="object1" class="objects" draggable="true" ondragstart="drag_start(event)" ondragend="drag_end(event)">object 1</div>
 <div id="object2" class="objects" draggable="true" ondragstart="drag_start(event)" ondragend="drag_end(event)">object 2</div>
 <div id="object3" class="objects" draggable="true" ondragstart="drag_start(event)" ondragend="drag_end(event)">object 3</div>
 <div id="object4" class="objects" draggable="true" ondragstart="drag_start(event)" ondragend="drag_end(event)">object 4</div>
-<div id="object5" class="objects" draggable="true" ondragstart="drag_start(event)" ondragend="drag_end(event)">object 5</div>
-<div id="object6" class="objects" draggable="true" ondragstart="drag_start(event)" ondragend="drag_end(event)">object 6</div>
-<div id="object7" class="objects" draggable="true" ondragstart="drag_start(event)" ondragend="drag_end(event)">object 7</div>
+<div id="object5" class="objects2" draggable="true" ondragstart="drag_start(event)" ondragend="drag_end(event)">object 5</div>
+<div id="object6" class="objects2" draggable="true" ondragstart="drag_start(event)" ondragend="drag_end(event)">object 6</div>
+<div id="object7" class="objects2" draggable="true" ondragstart="drag_start(event)" ondragend="drag_end(event)">object 7</div>
 <hr>
-<button onclick="readDropZone()">Get Object Data</button>
+
+<h2 id="app_status">App status...</h2>
+<h1><pre>    Drop Zone1	          Drop Zone2</pre></h1>
+
+<div id="drop_zone" ondragenter="drag_enter(event)" ondrop="drag_drop(event)" ondragover="return false" ondragleave="drag_leave(event)" ></div>
+<div id="drop_zone2" ondragenter="drag_enter(event)" ondrop="drag_drop(event)" ondragover="return false" ondragleave="drag_leave(event)" ></div>
+
+ 
+<hr>
+<pre>       <button onclick="readDropZone()">Get Object Data Zone1</button>                          <button onclick="readDropZone2()">Get Object Data Zone2</button> </pre>
 </body>
 </html>
