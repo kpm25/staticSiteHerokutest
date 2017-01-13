@@ -2,12 +2,19 @@
 <html>
 <head>
 <style>
+.test{
+  column-count: 2;
+}
 .objects {
+	/* This is
+		a multi-line
+		 display:inline-block;
+				comment */
     display:inline-block;
     background-color: #00ff00;
     border: #DFBC6A 1px solid;
-    width: 50px; 
-    height: 50px;
+    width: 40px; 
+    height: 40px;
     margin: 10px;
     padding: 8px;
     font-size: 18px;
@@ -20,8 +27,8 @@
     display:inline-block;
     background-color: #FF0000;
     border: #DFBC6A 1px solid;
-    width: 50px; 
-    height: 50px;
+    width: 40px; 
+    height: 40px;
     margin: 10px;
     padding: 8px;
     font-size: 18px;
@@ -29,28 +36,31 @@
     box-shadow: 2px 2px 2px #999;
     cursor: move;
 }
-#drop_zone {
+#drop_zone1 {
 
     display:inline-block;
     background-color: #ddd; 
     border: #999 1px solid;
-    width: 280px; 
-    height: 200px;
+    width: 252px; 
+    height: 180px;
     padding: 8px;
     font-size: 18px;
 	
-    margin-right: 20px;
-	margin-left: 20px;
-    
+    margin-right: 50px;
+	margin-left: 50px;
+   
 }
 #drop_zone2 {
     display:inline-block;
     background-color: #eee; 
     border: #999 1px solid;
-    width: 280px; 
-    height: 200px;
+    width: 252px; 
+    height: 180px;
     padding: 8px;
     font-size: 18px;
+	margin-right: 50px;
+	margin-left: 50px;
+	 margin-bottom: 50px;
 }
 </style>
 <script>
@@ -60,7 +70,7 @@ function _(id){
 var droppedIn = false;
 function drag_start(event) {
     _('app_status').innerHTML = "Dragging the "+event.target.getAttribute('id');
-    event.dataTransfer.dropEffect = "move";
+  //  event.dataTransfer.dropEffect = "move";
     event.dataTransfer.setData("text", event.target.getAttribute('id') );
 }
 function drag_enter(event) {
@@ -82,7 +92,7 @@ function drag_end(event) {
     if(droppedIn == false){
         _('app_status').innerHTML = "You let the "+event.target.getAttribute('id')+" go.";
     }
-	droppedIn = false;
+//	droppedIn = false;
 }
 function readDropZone(){
     for(var i=0; i < _("drop_zone2").children.length; i++){
@@ -99,25 +109,57 @@ function readDropZone2(){
 </script>
 </head>
 <body>
-<li ><a  href="index.html" class="selected" ><font color='red'>Home Page</font></a></li>
+<div class="test">
 
+<h1><pre>    Drop Zone1	 </pre></h1>
+<div id="drop_zone1" ondragenter="drag_enter(event)" ondrop="drag_drop(event)" ondragover="return false" ondragleave="drag_leave(event)" ></div>
+<pre>
+</pre>
+<h1><pre>    Drop Zone2	     </pre></h1>
+<div id="drop_zone2" ondragenter="drag_enter(event)" ondrop="drag_drop(event)" ondragover="return false" ondragleave="drag_leave(event)" ></div>
+<pre>
+
+
+</pre>
+<pre>
+
+
+</pre>
+<h2 id="app_status">App status...</h2>
+
+
+<pre>
+
+
+</pre>
 <div id="object1" class="objects" draggable="true" ondragstart="drag_start(event)" ondragend="drag_end(event)">object 1</div>
 <div id="object2" class="objects" draggable="true" ondragstart="drag_start(event)" ondragend="drag_end(event)">object 2</div>
 <div id="object3" class="objects" draggable="true" ondragstart="drag_start(event)" ondragend="drag_end(event)">object 3</div>
 <div id="object4" class="objects" draggable="true" ondragstart="drag_start(event)" ondragend="drag_end(event)">object 4</div>
+<pre>
+</pre>
 <div id="object5" class="objects2" draggable="true" ondragstart="drag_start(event)" ondragend="drag_end(event)">object 5</div>
 <div id="object6" class="objects2" draggable="true" ondragstart="drag_start(event)" ondragend="drag_end(event)">object 6</div>
 <div id="object7" class="objects2" draggable="true" ondragstart="drag_start(event)" ondragend="drag_end(event)">object 7</div>
-<hr>
 
-<h2 id="app_status">App status...</h2>
-<h1><pre>    Drop Zone1	          Drop Zone2</pre></h1>
 
-<div id="drop_zone" ondragenter="drag_enter(event)" ondrop="drag_drop(event)" ondragover="return false" ondragleave="drag_leave(event)" ></div>
-<div id="drop_zone2" ondragenter="drag_enter(event)" ondrop="drag_drop(event)" ondragover="return false" ondragleave="drag_leave(event)" ></div>
+<pre>   
 
- 
-<hr>
-<pre>       <button onclick="readDropZone()">Get Object Data Zone1</button>                          <button onclick="readDropZone2()">Get Object Data Zone2</button> </pre>
+
+    <button onclick="readDropZone()">Get Results Data Zone1</button>         <button onclick="readDropZone2()">Get Results Data Zone2</button> 
+
+
+</pre>
+
+
+<li ><a  href="index.html" class="selected" ><font color='red'>Home Page</font></a></li>
+
+
+
+
+</div>
+
+
+
 </body>
 </html>
